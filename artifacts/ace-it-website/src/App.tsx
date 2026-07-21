@@ -18,8 +18,15 @@ import {
   Users,
   Target,
   Award,
-  Clock
+  Clock,
+  FileText
 } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -626,6 +633,191 @@ function Contact() {
   );
 }
 
+function LegalCompliance() {
+  const policies = [
+    {
+      id: 'privacy',
+      title: 'Privacy Statement',
+      content: `ACE Information Technology Systems ("ACE IT Systems", "we", "us", or "our") is committed to protecting your personal information. This Privacy Statement explains how we collect, use, store, and protect data when you interact with our website or services.
+
+**Information We Collect**
+We may collect personal information you voluntarily provide, including your name, email address, phone number, and details about your service enquiry when you submit our contact form. We also collect standard web server logs (IP addresses, browser type, pages visited) for security and performance monitoring.
+
+**How We Use Your Information**
+Your information is used solely to respond to your enquiries, provide requested services, and improve our website experience. We do not sell, rent, or share your personal data with third parties for marketing purposes.
+
+**Data Security**
+We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, disclosure, alteration, or destruction. Data submitted through our contact form is transmitted securely.
+
+**Data Retention**
+We retain your personal information only for as long as necessary to fulfil the purposes described in this statement, or as required by applicable Nigerian law.
+
+**Your Rights**
+You have the right to request access to, correction of, or deletion of your personal data held by us. To exercise these rights, contact us at adenlea@gmail.com.
+
+**Contact**
+For privacy-related enquiries, please contact ACE Information Technology Systems, Abuja, Nigeria | adenlea@gmail.com | +234 1234567890.`,
+    },
+    {
+      id: 'terms',
+      title: 'Terms of Service',
+      content: `By accessing or using the ACE IT Systems website and services, you agree to be bound by these Terms of Service. Please read them carefully before engaging our services.
+
+**Use of Website**
+This website is provided for informational purposes regarding our services. You agree not to misuse, reverse-engineer, or attempt to gain unauthorised access to any part of this website or our systems.
+
+**Service Engagements**
+All service engagements are subject to a separate written agreement or purchase order between you and ACE IT Systems. Information on this website does not constitute a binding offer or contract.
+
+**Intellectual Property**
+All content on this website — including text, graphics, logos, and images — is the property of ACE Information Technology Systems and is protected under applicable Nigerian and international copyright law. Unauthorised reproduction is prohibited.
+
+**Limitation of Liability**
+ACE IT Systems shall not be liable for any indirect, incidental, or consequential damages arising from your use of this website or reliance on information contained herein. Our total liability for any claim arising from our services shall not exceed the amount paid for the specific service in question.
+
+**Governing Law**
+These Terms of Service are governed by the laws of the Federal Republic of Nigeria. Any disputes shall be subject to the exclusive jurisdiction of the courts of Abuja, Nigeria.
+
+**Amendments**
+We reserve the right to update these Terms at any time. Continued use of the website following any changes constitutes your acceptance of the revised Terms.`,
+    },
+    {
+      id: 'cookie',
+      title: 'Cookie Policy',
+      content: `This Cookie Policy explains how ACE IT Systems uses cookies and similar tracking technologies on our website.
+
+**What Are Cookies?**
+Cookies are small text files placed on your device when you visit a website. They help websites function correctly and provide information to website owners.
+
+**Cookies We Use**
+We use only essential cookies necessary for the basic operation of the website (e.g., session management). We do not currently use advertising, tracking, or analytics cookies that identify individual users.
+
+**Third-Party Cookies**
+If you interact with any embedded third-party content (such as maps or social media widgets), those third parties may set their own cookies subject to their own privacy policies. ACE IT Systems has no control over these cookies.
+
+**Managing Cookies**
+You can control and delete cookies through your browser settings. Disabling cookies may affect the functionality of certain parts of the website. For instructions on managing cookies, refer to your browser's help documentation.
+
+**Changes to This Policy**
+We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated effective date.`,
+    },
+    {
+      id: 'ndpr',
+      title: 'Data Protection & NDPR Compliance',
+      content: `ACE Information Technology Systems is committed to compliance with the Nigeria Data Protection Regulation (NDPR) 2019, issued by the National Information Technology Development Agency (NITDA), and the Nigeria Data Protection Act (NDPA) 2023.
+
+**Lawful Basis for Processing**
+We process personal data based on your consent (when you submit our contact form), legitimate interests (responding to business enquiries), and compliance with legal obligations under Nigerian law.
+
+**Data Subject Rights Under NDPR/NDPA**
+As a data subject, you have the following rights:
+- Right of access to your personal data
+- Right to rectification of inaccurate data
+- Right to erasure ("right to be forgotten")
+- Right to object to processing
+- Right to data portability
+- Right not to be subject to solely automated decision-making
+
+**Data Controller**
+ACE Information Technology Systems acts as the Data Controller for personal data collected through this website. Contact: adenlea@gmail.com.
+
+**Cross-Border Data Transfers**
+We do not transfer personal data outside Nigeria except where required by the nature of the service and with appropriate safeguards in place as required by the NDPA 2023.
+
+**Complaints**
+If you believe your data protection rights have been violated, you may lodge a complaint with the Nigeria Data Protection Commission (NDPC) at www.ndpc.gov.ng.`,
+    },
+    {
+      id: 'disclaimer',
+      title: 'Disclaimer',
+      content: `**General Information**
+The information provided on this website is for general informational purposes only. While ACE IT Systems endeavours to keep all content accurate and up to date, we make no representations or warranties of any kind — express or implied — about the completeness, accuracy, reliability, or suitability of the information, products, services, or related graphics contained on this website.
+
+**No Professional Advice**
+Nothing on this website constitutes professional IT, legal, financial, or engineering advice. You should obtain appropriate professional advice before making any decisions based on information found on this website.
+
+**External Links**
+This website may contain links to external websites. ACE IT Systems has no control over the content or availability of those sites and does not endorse or accept responsibility for them.
+
+**Service Availability**
+We reserve the right to modify, suspend, or discontinue any service or feature at any time without notice. We shall not be liable to you or any third party for any such modification, suspension, or discontinuation.
+
+**Accuracy of Quotations and Pricing**
+Any pricing, specifications, or availability information displayed on this website is indicative only and subject to change. Confirmed pricing is provided only through a formal written quotation from ACE IT Systems.`,
+    },
+  ];
+
+  return (
+    <AnimatedSection id="legal">
+      <section className="py-24 bg-gradient-to-b from-[#0F172A] to-[#1E293B]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium mb-6">
+              <FileText size={16} />
+              Legal & Compliance
+            </div>
+            <h2 className="font-display font-bold text-4xl sm:text-5xl text-white mb-6">
+              Policies &{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                Compliance
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              ACE IT Systems is committed to transparency, data protection, and operating in full compliance with Nigerian law.
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {policies.map((policy) => (
+              <AccordionItem
+                key={policy.id}
+                id={policy.id}
+                value={policy.id}
+                className="scroll-mt-24 bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700 rounded-xl px-6 hover:border-cyan-500/40 transition-all duration-200 data-[state=open]:border-cyan-500/50"
+                data-testid={`accordion-${policy.id}`}
+              >
+                <AccordionTrigger className="font-display font-semibold text-lg text-white hover:text-cyan-400 hover:no-underline py-6 [&[data-state=open]]:text-cyan-400">
+                  {policy.title}
+                </AccordionTrigger>
+                <AccordionContent className="pb-6">
+                  <div className="prose prose-invert prose-sm max-w-none text-gray-300 leading-relaxed space-y-3">
+                    {policy.content.split('\n\n').map((paragraph, idx) => {
+                      if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+                        return (
+                          <h4 key={idx} className="font-display font-semibold text-white text-base mt-4 mb-2">
+                            {paragraph.replace(/\*\*/g, '')}
+                          </h4>
+                        );
+                      }
+                      const parts = paragraph.split(/(\*\*[^*]+\*\*)/g);
+                      return (
+                        <p key={idx} className="text-gray-300">
+                          {parts.map((part, i) =>
+                            part.startsWith('**') && part.endsWith('**')
+                              ? <strong key={i} className="text-white font-semibold">{part.replace(/\*\*/g, '')}</strong>
+                              : part
+                          )}
+                        </p>
+                      );
+                    })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
+          <p className="text-center text-gray-500 text-sm mt-10">
+            Last updated: July 2025. For questions about any of these policies, contact us at{' '}
+            <a href="mailto:adenlea@gmail.com" className="text-cyan-400 hover:underline">
+              adenlea@gmail.com
+            </a>
+          </p>
+        </div>
+      </section>
+    </AnimatedSection>
+  );
+}
+
 function Footer() {
   const serviceLinks = [
     'IT Strategy & Operations',
@@ -641,10 +833,18 @@ function Footer() {
     { label: 'Contact', href: '#contact' },
   ];
 
+  const legalLinks = [
+    { label: 'Privacy Statement', href: '#privacy' },
+    { label: 'Terms of Service', href: '#terms' },
+    { label: 'Cookie Policy', href: '#cookie' },
+    { label: 'NDPR Compliance', href: '#ndpr' },
+    { label: 'Disclaimer', href: '#disclaimer' },
+  ];
+
   return (
     <footer className="bg-[#0F172A] border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
@@ -700,10 +900,31 @@ function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="font-display font-semibold text-white mb-4">Legal</h4>
+            <ul className="space-y-2">
+              {legalLinks.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="text-gray-400 hover:text-cyan-400 transition-colors" data-testid={`link-footer-legal-${index}`}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
           <p>&copy; 2025 ACE Information Technology Systems. All rights reserved.</p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            {legalLinks.map((link, index) => (
+              <a key={index} href={link.href} className="hover:text-cyan-400 transition-colors" data-testid={`link-footer-bottom-legal-${index}`}>
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
@@ -719,6 +940,7 @@ function Home() {
       <Services />
       <WhyChooseUs />
       <Contact />
+      <LegalCompliance />
       <Footer />
     </div>
   );
